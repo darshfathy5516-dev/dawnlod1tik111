@@ -65,10 +65,16 @@ body {
 body::before {
     content: '';
     position: fixed;
-    top: 0; left: 0; right: 0; height: 400px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0; /* ← يجعله يغطي كامل الصفحة */
     z-index: -2;
     background-size: 400% 400%;
-    transition: background 0.5s;
+    animation-duration: 15s;
+    animation-timing-function: ease;
+    animation-iteration-count: infinite;
+    animation-name: gradient-animation;
 }
 html.light body::before {
     background: linear-gradient(-45deg, #4f46e5, #8b5cf6, #ec4899, #2563eb);
