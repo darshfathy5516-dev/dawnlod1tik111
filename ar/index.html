@@ -37,7 +37,7 @@
       "@context": "https://schema.org",
       "@type": "WebSite",
       "name": "TikElite Downloader",
-      "url": "https://example.com/ar", 
+      "url": "https://example.com/ar",
       "potentialAction": {
         "@type": "SearchAction",
         "target": "https://example.com/ar?url={search_term_string}",
@@ -46,159 +46,27 @@
     }
     </script>
 
+    <link rel="stylesheet" href="style.css">
     <style>
         :root {
-            --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
             --font-family: 'Tahoma', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
-            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
         }
-
-        html.light {
-            --bg-color: #f9fafb; --grad-1: #a8b2ff; --grad-2: #c6a8ff; --grad-3: #ffb3b8; --glass-bg: rgba(255, 255, 255, 0.4); --glass-border: rgba(255, 255, 255, 0.6); --card-bg: rgba(255, 255, 255, 0.85); --text-primary: #111827; --text-secondary: #4b5563; --text-tertiary: #6b7280; --accent-color: #4f46e5; --accent-hover: #4338ca; --green-color: #16a34a; --green-hover: #15803d; --red-color: #dc2626; --header-bg: transparent; --header-text: white; --fab-bg: white; --fab-text: #4b5563;
-        }
-
-        html.dark {
-            --bg-color: #0f172a; --grad-1: #1e293b; --grad-2: #334155; --grad-3: #475569; --glass-bg: rgba(30, 41, 59, 0.3); --glass-border: rgba(255, 255, 255, 0.1); --card-bg: rgba(30, 41, 59, 0.7); --text-primary: #f8fafc; --text-secondary: #cbd5e1; --text-tertiary: #94a3b8; --accent-color: #6366f1; --accent-hover: #4f46e5; --green-color: #22c55e; --green-hover: #16a34a; --red-color: #ef4444; --header-bg: transparent; --header-text: white; --fab-bg: #1e293b; --fab-text: #e2e8f0;
-        }
-
-        @keyframes fade-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes spin { to { transform: rotate(360deg); } }
-        @keyframes gradient-animation { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
-        
-        body { margin: 0; font-family: var(--font-family); color: var(--text-primary); background-color: var(--bg-color); transition: color 0.3s, background-color 0.3s; padding: 1rem; padding-top: 80px; min-height: 100vh; box-sizing: border-box; }
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0; left: 0; right: 0; height: 400px;
-            z-index: -2;
-            background-size: 400% 400%;
-            transition: background 0.5s;
-        }
-        html.light body::before {
-            background: linear-gradient(-45deg, #4f46e5, #8b5cf6, #ec4899, #2563eb);
-            animation: gradient-animation 15s ease infinite;
-        }
-        html.dark body::before {
-            background: linear-gradient(-45deg, var(--grad-1), var(--grad-2), var(--grad-3));
-            animation: gradient-animation 20s ease infinite;
-        }
-        .container { max-width: 800px; margin: 0 auto; }
-        .page-header, .content-section { text-align: center; margin: 3rem 0; animation: fade-in 0.6s backwards; }
-        .page-header { margin-top: 1rem; }
-        h1 { font-size: clamp(2.2rem, 6vw, 3.5rem); font-weight: 800; margin: 0 0 0.5rem 0; line-height: 1.3; }
-        h2 { font-size: clamp(1.8rem, 5vw, 2.5rem); font-weight: 700; margin-bottom: 1.5rem; }
-        .page-header p, .content-section p { color: var(--text-secondary); font-size: clamp(1rem, 3vw, 1.15rem); margin: 0 auto; max-width: 650px; line-height: 1.7; }
-        
-        .sticky-header { position: fixed; top: 0; left: 0; right: 0; padding: 0 2rem; height: 70px; z-index: 1000; display: flex; align-items: center; justify-content: space-between; background: linear-gradient(135deg, #4f46e5, #a855f7); box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        .logo { font-size: 1.5rem; font-weight: 700; text-decoration: none; color: var(--header-text); }
-        .header-nav { display: flex; gap: 2rem; }
-        .header-nav a { color: rgba(255,255,255,0.8); text-decoration: none; font-weight: 500; transition: color 0.2s; white-space: nowrap; }
-        .header-nav a:hover { color: white; }
-
-        .menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; z-index: 1001; }
-        .menu-toggle .hamburger, .menu-toggle .hamburger::before, .menu-toggle .hamburger::after { display: block; width: 24px; height: 2px; background: white; position: relative; transition: all 0.3s; border-radius: 3px; }
-        .menu-toggle .hamburger::before, .menu-toggle .hamburger::after { content: ''; position: absolute; right: 0; }
-        .menu-toggle .hamburger::before { top: -8px; }
-        .menu-toggle .hamburger::after { bottom: -8px; }
-        
-        body.nav-open .menu-toggle .hamburger { background: transparent; }
+        body { font-family: var(--font-family); }
+        .menu-toggle .hamburger::before, .menu-toggle .hamburger::after { right: 0; left: auto; }
         body.nav-open .menu-toggle .hamburger::before { transform: rotate(-45deg) translate(-5px, 6px); }
         body.nav-open .menu-toggle .hamburger::after { transform: rotate(45deg) translate(-5px, -6px); }
-
         @media (max-width: 640px) {
-            .menu-toggle { display: block; margin-right: auto; }
-            .header-nav {
-                display: flex; position: absolute; top: 70px; left: 0; right: 0;
-                background: var(--card-bg); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-                box-shadow: var(--shadow-md); flex-direction: column; align-items: stretch;
-                padding: 0; max-height: 0; overflow: hidden;
-                transition: max-height 0.4s ease-out, padding 0.4s ease-out;
-                z-index: 999; border-bottom-left-radius: 1rem; border-bottom-right-radius: 1rem;
-                margin: 0 1rem;
-            }
-            .header-nav.active { max-height: 200px; padding: 0.5rem 0; }
-            .header-nav a { font-size: 1.1rem; color: var(--text-primary); padding: 0.8rem 1.5rem; text-align: center; transition: background-color 0.2s; }
-            .header-nav a:hover { background-color: var(--glass-bg); color: var(--text-primary); }
+            .menu-toggle { margin-right: auto; margin-left: 0; }
         }
-
-        .glass-card { background: var(--glass-bg); border: 1px solid var(--glass-border); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-radius: 1.5rem; padding: 2rem; box-shadow: var(--shadow-lg); transition: background 0.3s, border 0.3s; animation: fade-in 0.5s; }
-        .main-form-card { background: linear-gradient(135deg, #4f46e5, #a855f7, #ec4899); padding: 2.5rem 1.5rem; }
-        #tiktok-form { display: flex; flex-direction: column; gap: 1rem; }
-        #tiktok-url { width: 100%; padding: 1.1rem; background: rgba(0, 0, 0, 0.2); color: white; border: 2px solid rgba(255, 255, 255, 0.3); border-radius: 0.75rem; font-size: 1rem; box-sizing: border-box; transition: all 0.2s; box-shadow: 0 2px 4px rgba(0,0,0,0.2) inset; }
-        #tiktok-url::placeholder { color: rgba(255, 255, 255, 0.7); }
-        #tiktok-url:focus { outline: none; background: rgba(0, 0, 0, 0.3); border-color: white; box-shadow: 0 0 0 3px rgba(255,255,255,0.3), 0 2px 4px rgba(0,0,0,0.2) inset; border-image: none; }
-        #submit-btn { display: flex; align-items: center; justify-content: center; gap: 0.5rem; width: 100%; padding: 1.1rem; border-radius: 0.75rem; background-color: rgba(255, 255, 255, 0.95); color: var(--accent-hover); border: none; font-size: 1.2rem; font-weight: 600; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        #submit-btn:hover:not(:disabled) { background-color: white; transform: translateY(-4px); box-shadow: 0 6px 20px rgba(0,0,0,0.2); color: #3730a3; }
-        #submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
-        .form-description { text-align: center; color: rgba(255, 255, 255, 0.9); font-size: 1rem; line-height: 1.7; margin-top: 1.5rem; margin-bottom: 0; padding: 0 1rem; }
-        .spinner { width: 22px; height: 22px; border: 3px solid rgba(79, 70, 229, 0.3); border-top-color: var(--accent-hover); border-radius: 50%; animation: spin 1s linear infinite; }
-        
-        .status-container { margin-top: 1.5rem; text-align: center; }
-        #error-message { color: var(--red-color); background-color: color-mix(in srgb, var(--red-color) 15%, transparent); border: 1px solid var(--red-color); border-radius: 0.75rem; padding: 1rem; animation: fade-in 0.5s; }
-        #results { animation: fade-in 0.5s var(--ease-out-quart); display: flex; flex-direction: column; gap: 1.5rem; }
-        .author-info { display: flex; align-items: center; gap: 1rem; }
-        .author-info img { width: 60px; height: 60px; border-radius: 50%; }
-        .author-nickname { font-weight: 700; font-size: 1.2rem; }
-        .author-unique-id { color: var(--text-secondary); }
-        .video-title { color: var(--text-secondary); font-size: 1rem; border-right: 3px solid var(--accent-color); padding-right: 1rem; max-height: 60px; overflow-y: auto; text-align: right; }
-        
-        .download-buttons-container { display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem; }
-        .download-btn-large { display: flex; align-items: center; justify-content: center; text-align: center; padding: 1.25rem; border: none; border-radius: 0.75rem; background-color: var(--green-color); color: white; font-size: 1.2rem; font-weight: 600; cursor: pointer; text-decoration: none; transition: all 0.2s; width: 100%; box-sizing: border-box; }
-        .download-btn-large:hover { transform: translateY(-3px); box-shadow: 0 4px 10px color-mix(in srgb, var(--green-color) 40%, transparent); }
-        .download-btn-large.audio { background-color: var(--accent-color); }
-        .download-btn-large.audio:hover { background-color: var(--accent-hover); box-shadow: 0 4px 10px color-mix(in srgb, var(--accent-color) 40%, transparent); }
-        .download-btn-large.ad { background-color: #f59e0b; }
-        .download-btn-large.ad:hover { background-color: #d97706; box-shadow: 0 4px 10px color-mix(in srgb, #f59e0b 40%, transparent); }
-
-        .adsense-slot { width: 100%; margin: 1.5rem 0; background-color: var(--glass-bg); border: 1px solid var(--glass-border); display: flex; align-items: center; justify-content: center; color: var(--text-tertiary); font-size: 0.9rem; border-radius: 0.75rem; text-align: center; box-sizing: border-box; }
-        #adsense-top-banner, #adsense-below-input, #adsense-above-results { min-height: 90px; max-width: 728px; margin-left:auto; margin-right:auto; }
-        
-        #ad-overlay, #pre-download-overlay { position: fixed; inset: 0; background-color: rgba(0, 0, 0, 0.75); z-index: 9999; display: flex; align-items: center; justify-content: center; padding: 1rem; animation: fade-in 0.3s; }
-        .ad-overlay-content { background: var(--card-bg); border: 1px solid var(--glass-border); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); padding: 2rem; border-radius: 1rem; text-align: center; max-width: 90%; width: 500px; box-shadow: var(--shadow-lg); position: relative; }
-        .close-overlay-btn { position: absolute; top: 0.5rem; left: 0.75rem; background: none; border: none; font-size: 2rem; font-weight: bold; color: var(--text-tertiary); cursor: pointer; line-height: 1; padding: 0.5rem; transition: color 0.2s; }
-        .close-overlay-btn:hover { color: var(--text-primary); }
-        .ad-overlay-content p { font-size: 1.1rem; color: var(--text-secondary); }
-        #download-now-btn, #pre-download-continue-btn { background: var(--accent-color); color: white; border: none; padding: 0.8rem 1.5rem; border-radius: 0.5rem; font-size: 1.1rem; font-weight: 600; cursor: pointer; margin-top: 1rem; transition: all 0.2s; min-width: 180px; }
-        #download-now-btn:disabled, #pre-download-continue-btn:disabled { background: var(--text-tertiary); color: var(--text-primary); cursor: not-allowed; }
-        .adsense-interstitial { width: 100%; min-height: 250px; max-width: 336px; margin: 1rem auto; background-color: var(--glass-border); display: flex; align-items: center; justify-content: center; color: var(--text-tertiary); border-radius: 0.5rem; }
-        #adsense-sticky-footer { position: fixed; bottom: 0; left: 0; width: 100%; min-height: 50px; max-height:50px; z-index: 100; box-shadow: 0 -2px 10px rgba(0,0,0,0.1); display: none; background: var(--glass-bg); backdrop-filter: blur(10px); }
-        
-        .steps-grid, .features-grid { display: grid; gap: 1.5rem; margin-top: 2rem; }
-        .steps-grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
-        .step-card, .feature-item { background: var(--glass-bg); padding: 1.5rem; border-radius: 1rem; border: 1px solid var(--glass-border); }
-        .step-card .number { font-size: 1.5rem; font-weight: 700; color: var(--accent-color); background-color: color-mix(in srgb, var(--accent-color) 15%, transparent); width: 40px; height: 40px; line-height: 40px; border-radius: 50%; margin: 0 auto 1rem auto; }
-        .step-card h3 { margin: 0 0 0.5rem 0; font-size: 1.2rem; }
-        
-        .features-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); text-align: right; }
-        .feature-item { display: flex; flex-direction: row-reverse; align-items: flex-start; gap: 1rem; }
-        .feature-item svg { color: var(--green-color); width: 24px; height: 24px; flex-shrink: 0; margin-top: 2px; }
-        
-        .faq-section details { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 1rem; margin-bottom: 1rem; padding: 1rem; transition: background 0.3s; }
-        .faq-section summary { font-weight: 600; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
-        .faq-section summary::-webkit-details-marker { display: none; }
-        .faq-section summary::after { content: '+'; font-size: 1.5rem; transition: transform 0.2s; margin-left: auto; margin-right: 0.5rem; }
-        .faq-section details[open] summary::after { transform: rotate(45deg); }
-        .faq-section details p { margin-top: 1rem; text-align: right; }
-        
-        footer { text-align: center; margin-top: 4rem; padding: 3rem 1rem 2rem 1rem; border-top: none; font-size: 0.9rem; background: linear-gradient(135deg, #4338ca, #7e22ce, #be185d); color: #e5e7eb; border-radius: 1.5rem 1.5rem 0 0; box-shadow: 0 -5px 15px rgba(0,0,0,0.1); }
-        .footer-content { max-width: 900px; margin: 0 auto 2rem auto; text-align: right; line-height: 1.7; color: #d1d5db; }
-        .footer-content h3 { color: white; font-size: 1.2rem; }
-        .footer-nav { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 1rem; flex-wrap: wrap; }
-        .footer-nav a { color: #f9fafb; text-decoration: none; font-weight: 500; }
-        .footer-nav a:hover { color: white; text-decoration: underline; }
-        footer .copyright { color: #d1d5db; }
-        
-        .fab-container { position: fixed; bottom: 1.5rem; left: 1.5rem; right: auto; display: flex; flex-direction: column; gap: 1rem; z-index: 1001; }
-        .fab { width: 56px; height: 56px; border-radius: 50%; border: none; background-color: var(--fab-bg); color: var(--fab-text); box-shadow: var(--shadow-md); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s var(--ease-out-quart); }
-        .fab:hover { transform: scale(1.1) rotate(-15deg); box-shadow: var(--shadow-lg); }
-        #scroll-to-top-fab.fab-hidden { transform: translateY(20px); opacity: 0; visibility: hidden; pointer-events: none; }
-        .dark #sun-icon-fab { display: none; } .light #moon-icon-fab { display: none; }
-
-        [hidden] { display: none !important; }
-
-        @media (min-width: 640px) { #adsense-sticky-footer { display: none !important; } }
-        @media (max-width: 639px) { #adsense-sticky-footer { display: flex; } body { padding-bottom: 70px; } }
+        .video-title { border-right: 3px solid var(--accent-color); border-left: none; padding-right: 1rem; padding-left: 0; text-align: right; }
+        .features-grid { text-align: right; }
+        .feature-item { flex-direction: row-reverse; }
+        .faq-section summary::after { margin-left: auto; margin-right: 0.5rem; }
+        .faq-section details p { text-align: right; }
+        .footer-content { text-align: right; }
+        .fab-container { left: 1.5rem; right: auto; }
+        .fab:hover { transform: scale(1.1) rotate(-15deg); }
+        .close-overlay-btn { left: 0.75rem; right: auto; }
     </style>
 </head>
 <body class="">
@@ -363,192 +231,6 @@
     <!-- AdSense: Sticky Footer Banner -->
     <div class="adsense-slot" id="adsense-sticky-footer"><!-- 🎪 ⬇️ ⬇️ ⬇️ إعلان الشريط اللاصق السفلي - 320x50 ⬇️ ⬇️ ⬇️ --><!-- ضع كود AdSense لإعلان الشريط السفلي هنا --><!-- ⬆️ ⬆️ ⬆️ انتهى مكان إعلان الشريط اللاصق السفلي ⬆️ ⬆️ ⬆️ --></div>
 
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const form = document.getElementById('tiktok-form');
-        const urlInput = document.getElementById('tiktok-url');
-        const submitBtn = document.getElementById('submit-btn');
-        const errorMessage = document.getElementById('error-message');
-        const resultsContainer = document.getElementById('results');
-        const adOverlay = document.getElementById('ad-overlay');
-        const downloadNowBtn = document.getElementById('download-now-btn');
-        const adAboveResults = document.getElementById('adsense-above-results');
-        const themeToggleFab = document.getElementById('theme-toggle-fab');
-        const scrollToTopFab = document.getElementById('scroll-to-top-fab');
-        const menuToggle = document.getElementById('menu-toggle');
-        const headerNav = document.getElementById('header-nav');
-        const preDownloadOverlay = document.getElementById('pre-download-overlay');
-        const preDownloadContinueBtn = document.getElementById('pre-download-continue-btn');
-        const allCloseButtons = document.querySelectorAll('.close-overlay-btn');
-
-        let preDownloadInterval;
-        let downloadAdInterval;
-
-        // Mobile Menu
-        menuToggle.addEventListener('click', () => {
-            headerNav.classList.toggle('active');
-            document.body.classList.toggle('nav-open');
-        });
-        
-        // Theme
-        const applyTheme = (theme) => document.documentElement.className = theme;
-        const savedTheme = localStorage.getItem('theme');
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        let currentTheme = savedTheme || (prefersDark ? 'dark' : 'light');
-        applyTheme(currentTheme);
-        themeToggleFab.addEventListener('click', () => {
-            currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            localStorage.setItem('theme', currentTheme);
-            applyTheme(currentTheme);
-        });
-
-        // Scroll-to-Top FAB
-        window.addEventListener('scroll', () => {
-            scrollToTopFab.classList.toggle('fab-hidden', window.scrollY <= 300);
-        });
-        scrollToTopFab.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-        // Close Modals
-        allCloseButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                button.closest('#pre-download-overlay, #ad-overlay').hidden = true;
-                if (preDownloadInterval) clearInterval(preDownloadInterval);
-                if (downloadAdInterval) clearInterval(downloadAdInterval);
-            });
-        });
-
-        // Download Logic
-        function performDownload(url, filename) {
-            fetch(url)
-                .then(response => response.blob())
-                .then(blob => {
-                    const link = document.createElement('a');
-                    link.href = URL.createObjectURL(blob);
-                    link.download = filename;
-                    document.body.appendChild(link);
-                    link.click();
-                    document.body.removeChild(link);
-                    URL.revokeObjectURL(link.href);
-                }).catch(() => showError('فشل التنزيل. يرجى التحقق من اتصالك والمحاولة مرة أخرى.'));
-        }
-
-        // Main Form Submission Flow
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const tiktokUrl = urlInput.value.trim();
-            if (!tiktokUrl) return showError('يرجى لصق رابط تيك توك صالح.');
-
-            preDownloadOverlay.hidden = false;
-            let countdown = 5;
-            preDownloadContinueBtn.textContent = `المتابعة خلال ${countdown} ثوانٍ`;
-            preDownloadContinueBtn.disabled = true;
-
-            if (preDownloadInterval) clearInterval(preDownloadInterval);
-            preDownloadInterval = setInterval(() => {
-                countdown--;
-                preDownloadContinueBtn.textContent = `المتابعة خلال ${countdown} ثوانٍ`;
-                if (countdown <= 0) {
-                    clearInterval(preDownloadInterval);
-                    preDownloadContinueBtn.disabled = false;
-                    preDownloadContinueBtn.textContent = 'متابعة';
-                }
-            }, 1000);
-
-            preDownloadContinueBtn.onclick = () => {
-                preDownloadOverlay.hidden = true;
-                fetchAndDisplayResults(tiktokUrl);
-            };
-        });
-
-        async function fetchAndDisplayResults(tiktokUrl) {
-            setLoadingState(true);
-            hideStatus();
-            try {
-                const response = await fetch(`https://www.tikwm.com/api/?url=${encodeURIComponent(tiktokUrl)}`);
-                if (!response.ok) throw new Error(`خطأ في الشبكة: ${response.statusText}`);
-                const data = await response.json();
-                if (data.code !== 0) throw new Error(data.msg || 'لا يمكن جلب الفيديو. قد يكون خاصًا أو رابطًا غير صالح.');
-                displayResults(data.data);
-                document.getElementById('status-container').scrollIntoView({ behavior: 'smooth', block: 'start' });
-            } catch (error) {
-                showError(error.message);
-            } finally {
-                setLoadingState(false);
-            }
-        }
-
-        function setLoadingState(isLoading) {
-            submitBtn.disabled = isLoading;
-            submitBtn.innerHTML = isLoading ? '<div class="spinner"></div><span>جاري المعالجة...</span>' : '<span>تنزيل</span>';
-        }
-
-        function hideStatus() {
-            errorMessage.hidden = true;
-            resultsContainer.innerHTML = '';
-            adAboveResults.hidden = true;
-        }
-
-        function showError(message) {
-            errorMessage.textContent = message;
-            errorMessage.hidden = false;
-        }
-
-        // Ad Overlay for Downloads
-        function triggerDownloadAd(downloadUrl, filename) {
-            adOverlay.hidden = false;
-            let countdown = 5;
-            downloadNowBtn.textContent = `تنزيل خلال ${countdown} ثوانٍ`;
-            downloadNowBtn.disabled = true;
-
-            if (downloadAdInterval) clearInterval(downloadAdInterval);
-            downloadAdInterval = setInterval(() => {
-                countdown--;
-                downloadNowBtn.textContent = `تنزيل خلال ${countdown} ثوانٍ`;
-                if (countdown <= 0) {
-                    clearInterval(downloadAdInterval);
-                    downloadNowBtn.disabled = false;
-                    downloadNowBtn.textContent = 'تنزيل الآن';
-                }
-            }, 1000);
-
-            downloadNowBtn.onclick = () => {
-                adOverlay.hidden = true;
-                performDownload(downloadUrl, filename);
-            };
-        }
-        
-        // Display Results
-        function displayResults(data) {
-            adAboveResults.hidden = false;
-            const sanitizedTitle = (data.title || 'tiktok_video').replace(/[^\p{L}\p{N}\s-]/gu, '').substring(0, 50);
-            const videoFilename = `@${data.author.unique_id}-${sanitizedTitle}.mp4`;
-            const audioFilename = `@${data.author.unique_id}-${(data.music_info.title || 'audio').replace(/[^\p{L}\p{N}\s-]/gu, '')}.mp3`;
-            
-            resultsContainer.innerHTML = `
-                <article class="glass-card">
-                    <div class="author-info">
-                        <img src="${data.author.avatar}" alt="صورة ${data.author.nickname} الرمزية" loading="lazy">
-                        <div>
-                            <p class="author-nickname">${data.author.nickname}</p>
-                            <p class="author-unique-id">@${data.author.unique_id}</p>
-                        </div>
-                    </div>
-                    ${data.title ? `<p class="video-title" style="margin-top: 1rem;">${data.title}</p>` : ''}
-                    <div class="download-buttons-container">
-                        <button data-url="${data.play}" data-filename="${videoFilename}" class="download-btn-large">📥 تنزيل الفيديو (MP4)</button>
-                        <button data-url="${data.music}" data-filename="${audioFilename}" class="download-btn-large audio">🎵 تنزيل الصوت (MP3)</button>
-                        ${data.hdplay ? `<button data-url="${data.hdplay}" data-filename="${videoFilename}" class="download-btn-large ad">🔥 تنزيل فيديو HD</button>` : ''}
-                    </div>
-                </article>`;
-            
-            resultsContainer.querySelectorAll('.download-btn-large').forEach(button => {
-                button.addEventListener('click', (e) => {
-                    const { url, filename } = e.currentTarget.dataset;
-                    triggerDownloadAd(url, filename);
-                });
-            });
-        }
-    });
-</script>
+    <script src="script.js"></script>
 </body>
 </html>
