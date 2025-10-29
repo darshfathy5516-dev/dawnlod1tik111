@@ -7,17 +7,17 @@
 
 html.light {
     --bg-color: #ffffff;
-    --grad-1: #4f46e5;
-    --grad-2: #8b5cf6;
-    --grad-3: #ec4899;
+    --grad-1: #0ea5e9;
+    --grad-2: #06b6d4;
+    --grad-3: #10b981;
     --glass-bg: rgba(255, 255, 255, 0.85);
     --glass-border: rgba(0, 0, 0, 0.1);
     --card-bg: rgba(255, 255, 255, 0.95);
     --text-primary: #111827;
     --text-secondary: #4b5563;
     --text-tertiary: #6b7280;
-    --accent-color: #4f46e5;
-    --accent-hover: #4338ca;
+    --accent-color: #0ea5e9;
+    --accent-hover: #0284c7;
     --green-color: #16a34a;
     --red-color: #dc2626;
     --header-text: white;
@@ -28,17 +28,17 @@ html.light {
 
 html.dark {
     --bg-color: #000000;
-    --grad-1: #1e1e1e;
-    --grad-2: #2d2d2d;
-    --grad-3: #3d3d3d;
+    --grad-1: #0c4a6e;
+    --grad-2: #0e7490;
+    --grad-3: #065f46;
     --glass-bg: rgba(30, 30, 30, 0.85);
     --glass-border: rgba(255, 255, 255, 0.15);
     --card-bg: rgba(20, 20, 20, 0.95);
     --text-primary: #ffffff;
     --text-secondary: #e5e7eb;
     --text-tertiary: #9ca3af;
-    --accent-color: #6366f1;
-    --accent-hover: #818cf8;
+    --accent-color: #0ea5e9;
+    --accent-hover: #38bdf8;
     --green-color: #22c55e;
     --red-color: #ef4444;
     --header-text: white;
@@ -65,17 +65,23 @@ body {
 body::before {
     content: '';
     position: fixed;
-    top: 0; left: 0; right: 0; height: 400px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     z-index: -2;
     background-size: 400% 400%;
-    transition: background 0.5s;
+    animation-duration: 15s;
+    animation-timing-function: ease;
+    animation-iteration-count: infinite;
+    animation-name: gradient-animation;
 }
 html.light body::before {
-    background: linear-gradient(-45deg, #4f46e5, #8b5cf6, #ec4899, #2563eb);
+    background: linear-gradient(-45deg, #0ea5e9, #06b6d4, #10b981, #0284c7);
     animation: gradient-animation 15s ease infinite;
 }
 html.dark body::before {
-    background: linear-gradient(-45deg, #1e1e1e, #2d2d2d, #3d3d3d, #1e1e1e);
+    background: linear-gradient(-45deg, #0c4a6e, #0e7490, #065f46, #0c4a6e);
     animation: gradient-animation 20s ease infinite;
 }
 .container { max-width: 800px; margin: 0 auto; }
@@ -93,7 +99,7 @@ h2 { font-size: clamp(1.8rem, 5vw, 2.5rem); font-weight: 700; margin-bottom: 1.5
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: linear-gradient(135deg, #4f46e5, #a855f7);
+    background: linear-gradient(135deg, #0ea5e9, #06b6d4);
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 .logo { font-size: 1.5rem; font-weight: 700; text-decoration: none; color: var(--header-text); }
@@ -127,16 +133,16 @@ body.nav-open .menu-toggle .hamburger::after { transform: rotate(-45deg) transla
 }
 
 .glass-card { background: var(--glass-bg); border: 1px solid var(--glass-border); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-radius: 1.5rem; padding: 2rem; box-shadow: var(--card-shadow); animation: fade-in 0.5s; }
-.main-form-card { background: linear-gradient(135deg, #4f46e5, #a855f7, #ec4899); padding: 2.5rem 1.5rem; }
+.main-form-card { background: linear-gradient(135deg, #0ea5e9, #06b6d4, #10b981); padding: 2.5rem 1.5rem; }
 #tiktok-form { display: flex; flex-direction: column; gap: 1rem; }
 #tiktok-url { width: 100%; padding: 1.1rem; background: rgba(0, 0, 0, 0.2); color: white; border: 2px solid rgba(255, 255, 255, 0.3); border-radius: 0.75rem; font-size: 1rem; box-sizing: border-box; transition: all 0.2s; box-shadow: 0 2px 4px rgba(0,0,0,0.2) inset; }
 #tiktok-url::placeholder { color: rgba(255, 255, 255, 0.7); }
 #tiktok-url:focus { outline: none; background: rgba(0, 0, 0, 0.3); border-color: white; box-shadow: 0 0 0 3px rgba(255,255,255,0.3), 0 2px 4px rgba(0,0,0,0.2) inset; }
-#submit-btn { display: flex; align-items: center; justify-content: center; gap: 0.5rem; width: 100%; padding: 1.1rem; border-radius: 0.75rem; background-color: rgba(255, 255, 255, 0.95); color: var(--accent-hover); border: none; font-size: 1.2rem; font-weight: 600; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-#submit-btn:hover:not(:disabled) { background-color: white; transform: translateY(-4px); box-shadow: 0 6px 20px rgba(0,0,0,0.2); color: #3730a3; }
+#submit-btn { display: flex; align-items: center; justify-content: center; gap: 0.5rem; width: 100%; padding: 1.1rem; border-radius: 0.75rem; background-color: rgba(255, 255, 255, 0.95); color: #0284c7; border: none; font-size: 1.2rem; font-weight: 600; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+#submit-btn:hover:not(:disabled) { background-color: white; transform: translateY(-4px); box-shadow: 0 6px 20px rgba(0,0,0,0.2); color: #0c4a6e; }
 #submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
 .form-description { text-align: center; color: rgba(255, 255, 255, 0.9); font-size: 1rem; line-height: 1.6; margin-top: 1.5rem; margin-bottom: 0; padding: 0 1rem; }
-.spinner { width: 22px; height: 22px; border: 3px solid rgba(79, 70, 229, 0.3); border-top-color: var(--accent-hover); border-radius: 50%; animation: spin 1s linear infinite; }
+.spinner { width: 22px; height: 22px; border: 3px solid rgba(14, 165, 233, 0.3); border-top-color: var(--accent-hover); border-radius: 50%; animation: spin 1s linear infinite; }
 .status-container { margin-top: 1.5rem; text-align: center; }
 #error-message { color: var(--red-color); background-color: color-mix(in srgb, var(--red-color) 15%, transparent); border: 1px solid var(--red-color); border-radius: 0.75rem; padding: 1rem; animation: fade-in 0.5s; }
 #results { animation: fade-in 0.5s var(--ease-out-quart); display: flex; flex-direction: column; gap: 1.5rem; }
@@ -177,7 +183,7 @@ body.nav-open .menu-toggle .hamburger::after { transform: rotate(-45deg) transla
 .faq-section summary::after { content: '+'; font-size: 1.5rem; transition: transform 0.2s; }
 .faq-section details[open] summary::after { transform: rotate(45deg); }
 .faq-section details p { margin-top: 1rem; text-align: left; }
-footer { text-align: center; margin-top: 4rem; padding: 3rem 1rem 2rem 1rem; border-top: none; font-size: 0.9rem; background: linear-gradient(135deg, #4338ca, #7e22ce, #be185d); color: #e5e7eb; border-radius: 1.5rem 1.5rem 0 0; box-shadow: 0 -5px 15px rgba(0,0,0,0.1); }
+footer { text-align: center; margin-top: 4rem; padding: 3rem 1rem 2rem 1rem; border-top: none; font-size: 0.9rem; background: linear-gradient(135deg, #0284c7, #0891b2, #059669); color: #e5e7eb; border-radius: 1.5rem 1.5rem 0 0; box-shadow: 0 -5px 15px rgba(0,0,0,0.1); }
 .footer-content { max-width: 900px; margin: 0 auto 2rem auto; text-align: left; line-height: 1.7; color: #d1d5db; }
 .footer-content h3 { color: white; font-size: 1.2rem; }
 .footer-nav { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 1rem; flex-wrap: wrap; }
